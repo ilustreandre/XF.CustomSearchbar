@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<customrenderers:SearchPage xmlns="http://xamarin.com/schemas/2014/forms" 
+		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+		xmlns:customrenderers="clr-namespace:XF.CustomSearchbar.CustomRenderers;assembly=XF.CustomSearchbar" 
+		x:Class="XF.CustomSearchbar.Search"
+        Title="Pesquisa"
+		SearchPlaceHolderText="Buscar..."
+        SearchText="{Binding TextSearch, Mode=TwoWay}">
+
+    <StackLayout Spacing="10">
+
+        <ListView ItemsSource="{Binding List, Mode=TwoWay}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding Text}" Detail="{Binding Detail}"></TextCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+    </StackLayout>
+</customrenderers:SearchPage> 
