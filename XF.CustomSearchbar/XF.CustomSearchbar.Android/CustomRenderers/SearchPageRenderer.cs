@@ -25,10 +25,15 @@ namespace XF.CustomSearchbar.Droid.CustomRenderers
             if (e?.NewElement == null || e.OldElement != null)
                 return;
 
-            AddSearchToToolBar();
+            if (e?.OldElement == null)
+            {
+                var contentPage = Element as ContentPage;
+                contentPage.Appearing += (s, a) => HandlePageAppearing();
+                contentPage.Disappearing += (s, a) => HandlePageDisappearing();
+            }
         }
 
-        protected override void Dispose(bool disposing)
+        private void HandlePageDisappearing()
         {
             if (_searchView != null)
             {
@@ -37,11 +42,9 @@ namespace XF.CustomSearchbar.Droid.CustomRenderers
             }
 
             MainActivity.ToolBar?.Menu?.RemoveItem(Resource.Menu.searchmenu);
-
-            base.Dispose(disposing);
         }
 
-        private void AddSearchToToolBar()
+        private void HandlePageAppearing()
         {
             if (MainActivity.ToolBar == null || Element == null)
                 return;
