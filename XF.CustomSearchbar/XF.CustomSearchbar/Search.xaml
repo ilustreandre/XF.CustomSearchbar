@@ -9,7 +9,9 @@
 
     <StackLayout Spacing="10">
 
-        <ListView ItemsSource="{Binding List, Mode=TwoWay}">
+        <ListView ItemsSource="{Binding List, Mode=TwoWay}"
+                  HasUnevenRows="True"
+                  ItemTapped="OnItemTapped">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <TextCell Text="{Binding Text}" Detail="{Binding Detail}"></TextCell>
